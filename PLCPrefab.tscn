@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bf3cag8xx0acm"]
+
+[ext_resource type="PackedScene" uid="uid://dsp143au8p6ws" path="res://3D_Assets/PLC.glb" id="1_twsb2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twsb2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53lps"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebb7i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_otry6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s8ctu"]
+albedo_color = Color(0.47843137, 0.47843137, 0.47843137, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyd6t"]
+albedo_color = Color(0.47788018, 0.47788012, 0.47788012, 1)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_twsb2")]
+
+[node name="Object_2" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_twsb2")
+
+[node name="Object_3" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_53lps")
+
+[node name="Object_4" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ebb7i")
+
+[node name="Object_5" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_otry6")
+
+[node name="Object_6" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s8ctu")
+
+[node name="Object_7" parent="Sketchfab_model/La_vieja_betsy_STL_cleaner_materialmerger_gles" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nyd6t")

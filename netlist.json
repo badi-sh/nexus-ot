@@ -1,0 +1,57 @@
+{
+  "Assets": [
+	{
+	  "Id": "Node_65951",
+	  "Type": "Adversary",
+	  "PosX": 200,
+	  "PosY": 120,
+	  "Meta": {
+		"id": "Node_65951",
+		"ip": "192.168.1.138",
+		"Type": "Adversary",
+		"PurdueLayer": "Level5_External",
+		"Role": "Caldera"
+	  }
+	},
+	{
+	  "Id": "Node_66864",
+	  "Type": "Hybrid",
+	  "PosX": 600,
+	  "PosY": 120,
+	  "Meta": {
+		"id": "Node_66864",
+		"ip": "192.168.1.24",
+		"Type": "Hybrid",
+		"PurdueLayer": "Level1_BasicControl"
+	  }
+	},
+	{
+	  "Id": "Node_66398",
+	  "Type": "Switch",
+	  "PosX": 380,
+	  "PosY": 240,
+	  "Meta": {
+		"id": "Node_66398",
+		"ip": "192.168.1.246",
+		"Type": "Switch",
+		"PurdueLayer": "Undeclared"
+	  }
+	}
+  ],
+  "Links": [
+	{
+	  "From": "Node_65951",
+	  "FromPort": 0,
+	  "To": "Node_66398",
+	  "ToPort": 0,
+	  "LinkType": "Bidirectional"
+	},
+	{
+	  "From": "Node_66398",
+	  "FromPort": 0,
+	  "To": "Node_66864",
+	  "ToPort": 0,
+	  "LinkType": "Bidirectional"
+	}
+  ]
+}

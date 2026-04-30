@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmwdlg8m0psyc"]
+
+[node name="Plant3D" type="Node3D"]
+
+[node name="PlantMesh" type="MeshInstance3D" parent="."]
+custom_aabb = AABB(50, 1, 50, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 15, 15)

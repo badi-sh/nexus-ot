@@ -1,0 +1,33 @@
+# Godot
+.godot/
+*.import
+export_presets.cfg
+
+# Mono/C#
+.mono/
+bin/
+obj/
+*.csproj.user
+*.sln.DotSettings.user
+
+# Python
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/logs/
+backend/nodered_data/
+backend/caldera/
+
+# Docker
+backend/docker-compose.yml
+backend/docker.compose.soc.yml
+
+# Temp/Backup files
+*.bak
+*.tmp
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+backend/soc/

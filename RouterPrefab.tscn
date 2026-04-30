@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqf4swi1d7bci"]
+
+[ext_resource type="PackedScene" uid="uid://be8ykd72atip0" path="res://3D_Assets/source/lyq.glb" id="1_c340g"]
+
+[node name="lyq" instance=ExtResource("1_c340g")]

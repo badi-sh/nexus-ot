@@ -1,0 +1,14 @@
+{
+  "Assets": [
+    {
+      "Id": "Node_1868",
+      "Type": "Physical",
+      "Meta": {
+        "id": "AssetNode",
+        "ip": "192.168.1.10",
+        "Type": "Physical"
+      }
+    }
+  ],
+  "Links": []
+}

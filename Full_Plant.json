@@ -1,0 +1,147 @@
+{
+  "Assets": [
+    {
+      "Id": "Node_1860",
+      "Type": "Router",
+      "PosX": 360,
+      "PosY": 140,
+      "Meta": {
+        "id": "Node_1860",
+        "ip": "192.168.1.234",
+        "Type": "Router",
+        "PurdueLayer": "Level4_Enterprise",
+        "name": "Router",
+        "Port_1": "Node_5071",
+        "Port_2": "Node_243942"
+      }
+    },
+    {
+      "Id": "Node_243942",
+      "Type": "Firewall",
+      "PosX": 640,
+      "PosY": 220,
+      "Meta": {
+        "id": "Node_243942",
+        "ip": "192.168.1.196",
+        "Type": "Firewall",
+        "PurdueLayer": "Level3_5_DMZ",
+        "name": "Firewall"
+      }
+    },
+    {
+      "Id": "_GraphNode_742",
+      "Type": "Switch",
+      "PosX": 940,
+      "PosY": 140,
+      "Meta": {
+        "id": "Node_303466",
+        "ip": "192.168.1.201",
+        "Type": "Switch",
+        "PurdueLayer": "Undeclared",
+        "name": "Switch",
+        "Port_1": "Node_243942",
+        "Port_2": "Node_339612",
+        "Port_3": "Node_340645",
+        "Port_4": "_GraphNode_246"
+      }
+    },
+    {
+      "Id": "Node_339612",
+      "Type": "IDS",
+      "PosX": 1140,
+      "PosY": 100,
+      "Meta": {
+        "id": "Node_339612",
+        "ip": "192.168.1.211",
+        "Type": "IDS",
+        "PurdueLayer": "Level3_5_DMZ",
+        "name": "IDS"
+      }
+    },
+    {
+      "Id": "Node_340645",
+      "Type": "HMI",
+      "PosX": 1140,
+      "PosY": 200,
+      "Meta": {
+        "id": "Node_340645",
+        "ip": "192.168.1.183",
+        "Type": "HMI",
+        "PurdueLayer": "Level2_Supervisory",
+        "name": "HMI"
+      }
+    },
+    {
+      "Id": "_GraphNode_246",
+      "Type": "RTU",
+      "PosX": 1140,
+      "PosY": 300,
+      "Meta": {
+        "id": "Node_142823",
+        "ip": "192.168.1.223",
+        "Type": "RTU",
+        "PurdueLayer": "Level1_BasicControl",
+        "name": "PLC",
+        "Port_1": "_GraphNode_742"
+      }
+    },
+    {
+      "Id": "Node_5071",
+      "Type": "Digital",
+      "PosX": 360,
+      "PosY": 40,
+      "Meta": {
+        "id": "Node_5071",
+        "ip": "192.168.1.146",
+        "Type": "Digital",
+        "PurdueLayer": "Undeclared",
+        "name": "Adversary",
+        "Role": "RedTeam"
+      }
+    }
+  ],
+  "Links": [
+    {
+      "From": "Node_5071",
+      "FromPort": 0,
+      "To": "Node_1860",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_1860",
+      "FromPort": 0,
+      "To": "Node_243942",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_243942",
+      "FromPort": 0,
+      "To": "_GraphNode_742",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "_GraphNode_742",
+      "FromPort": 0,
+      "To": "Node_339612",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "_GraphNode_742",
+      "FromPort": 0,
+      "To": "Node_340645",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "_GraphNode_742",
+      "FromPort": 0,
+      "To": "_GraphNode_246",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    }
+  ]
+}

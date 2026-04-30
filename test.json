@@ -1,0 +1,192 @@
+{
+  "Assets": [
+    {
+      "Id": "Node_1860",
+      "Type": "Router",
+      "PosX": 360,
+      "PosY": 140,
+      "Meta": {
+        "id": "Node_1860",
+        "ip": "192.168.1.234",
+        "Type": "Router",
+        "PurdueLayer": "Level4_Enterprise",
+        "name": "Router"
+      }
+    },
+    {
+      "Id": "Node_5071",
+      "Type": "Adversary",
+      "PosX": 360,
+      "PosY": 40,
+      "Meta": {
+        "id": "Node_5071",
+        "ip": "192.168.1.146",
+        "Type": "Adversary",
+        "PurdueLayer": "Level5_External",
+        "name": "Adversary"
+      }
+    },
+    {
+      "Id": "Node_303466",
+      "Type": "Switch",
+      "PosX": 940,
+      "PosY": 140,
+      "Meta": {
+        "id": "Node_303466",
+        "ip": "192.168.1.201",
+        "Type": "Switch",
+        "PurdueLayer": "Undeclared",
+        "name": "Switch"
+      }
+    },
+    {
+      "Id": "Node_243942",
+      "Type": "Firewall",
+      "PosX": 640,
+      "PosY": 220,
+      "Meta": {
+        "id": "Node_243942",
+        "ip": "192.168.1.196",
+        "Type": "Firewall",
+        "PurdueLayer": "Level3_5_DMZ",
+        "name": "Firewall"
+      }
+    },
+    {
+      "Id": "Node_975678",
+      "Type": "RTU",
+      "PosX": 1140,
+      "PosY": 400,
+      "Meta": {
+        "id": "Node_975678",
+        "ip": "192.168.1.8",
+        "Type": "RTU",
+        "PurdueLayer": "Level1_BasicControl",
+        "name": "RTU"
+      }
+    },
+    {
+      "Id": "Node_340645",
+      "Type": "HMI",
+      "PosX": 1140,
+      "PosY": 200,
+      "Meta": {
+        "id": "Node_340645",
+        "ip": "192.168.1.183",
+        "Type": "HMI",
+        "PurdueLayer": "Level2_Supervisory",
+        "name": "HMI"
+      }
+    },
+    {
+      "Id": "Node_340178",
+      "Type": "MTU",
+      "PosX": 1140,
+      "PosY": 300,
+      "Meta": {
+        "id": "Node_340178",
+        "ip": "192.168.1.95",
+        "Type": "MTU",
+        "PurdueLayer": "Level1_BasicControl",
+        "name": "MTU"
+      }
+    },
+    {
+      "Id": "Node_339612",
+      "Type": "IDS",
+      "PosX": 1140,
+      "PosY": 100,
+      "Meta": {
+        "id": "Node_339612",
+        "ip": "192.168.1.211",
+        "Type": "IDS",
+        "PurdueLayer": "Level3_5_DMZ",
+        "name": "IDS"
+      }
+    },
+    {
+      "Id": "Node_1183398",
+      "Type": "Digital",
+      "PosX": 1380,
+      "PosY": 380,
+      "Meta": {
+        "id": "Node_1183398",
+        "ip": "192.168.1.87",
+        "Type": "Digital",
+        "PurdueLayer": "Undeclared",
+        "name": "Breaker 1"
+      }
+    },
+    {
+      "Id": "Node_1182766",
+      "Type": "Digital",
+      "PosX": 1380,
+      "PosY": 480,
+      "Meta": {
+        "id": "Node_1182766",
+        "ip": "192.168.1.20",
+        "Type": "Digital",
+        "PurdueLayer": "Undeclared",
+        "name": "Breaker 2"
+      }
+    }
+  ],
+  "Links": [
+    {
+      "From": "Node_5071",
+      "FromPort": 0,
+      "To": "Node_1860",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_1860",
+      "FromPort": 0,
+      "To": "Node_243942",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_243942",
+      "FromPort": 0,
+      "To": "Node_303466",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_303466",
+      "FromPort": 1,
+      "To": "Node_339612",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_303466",
+      "FromPort": 2,
+      "To": "Node_340645",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_303466",
+      "FromPort": 3,
+      "To": "Node_340178",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_303466",
+      "FromPort": 4,
+      "To": "Node_975678",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    },
+    {
+      "From": "Node_975678",
+      "FromPort": 0,
+      "To": "Node_1182766",
+      "ToPort": 0,
+      "LinkType": "Bidirectional"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+  </PropertyGroup>
+
+  <!-- 🔥 EXCLUDE CALDERA + BACKEND FROM BUILD -->
+  <ItemGroup>
+    <Compile Remove="backend/**" />
+    <Compile Remove="backend/**/*.cs" />
+    
+    <!-- Keep files visible but not compiled -->
+    <None Include="backend/**" />
+  </ItemGroup>
+</Project>

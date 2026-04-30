@@ -1,0 +1,35 @@
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install networking tools and OpenPLC core dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    python3 \
+    python3-pip \
+    sqlite3 \
+    iptables \
+    iproute2 \
+    sudo \
+    curl \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /work
+
+# Clone the official OpenPLC v3 Runtime
+RUN git clone https://github.com/thiagoralves/OpenPLC_v3.git
+
+# Compile and Install OpenPLC
+WORKDIR /work/OpenPLC_v3
+RUN ./install.sh docker
+
+# Create the custom startup script expected by infrastructure.py
+RUN echo '#!/bin/bash\ncd /work/OpenPLC_v3\nnohup node server.js > /var/log/openplc.log 2>&1 &\necho "OpenPLC Runtime Started"' > /work/start_openplc.sh && \
+    chmod +x /work/start_openplc.sh
+
+# Expose Industrial Ports: Web UI (8080), Modbus (502), Ethernet/IP (44818), DNP3 (20000)
+EXPOSE 8080 502 44818 20000
+
+# Keep container alive
+CMD ["tail", "-f", "/dev/null"]

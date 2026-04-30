@@ -1,0 +1,74 @@
+FROM python:3.10-bookworm
+
+# -----------------------------
+# 1. System dependencies (Node 18 + Go)
+# -----------------------------
+RUN apt-get update && apt-get install -y \
+    git \
+    build-essential \
+    curl \
+    golang \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
+
+# -----------------------------
+# 2. Clone CALDERA (latest GitHub)
+# -----------------------------
+WORKDIR /opt
+RUN git clone --recursive https://github.com/mitre/caldera.git
+
+WORKDIR /opt/caldera
+
+# -----------------------------
+# 3. Python dependencies
+# -----------------------------
+RUN pip install --upgrade pip setuptools wheel
+
+# Install core requirements
+RUN pip install -r requirements.txt
+
+# Fix known bad dependency pin
+RUN pip install aiohttp==3.10.11
+
+# Fix builder plugin dependency
+RUN pip install docker
+
+# -----------------------------
+# 4. Install Atomic Red Team dataset (optional but recommended)
+# -----------------------------
+RUN git clone https://github.com/redcanaryco/atomic-red-team.git \
+    plugins/atomic/data/atomic-red-team || true
+
+# -----------------------------
+# 5. Build Magma UI (Frontend)
+# -----------------------------
+WORKDIR /opt/caldera/plugins/magma
+
+# Install and build UI
+RUN npm install
+RUN npm run build
+
+# -----------------------------
+# 6. Create configuration
+# -----------------------------
+WORKDIR /opt/caldera
+RUN mkdir -p conf data
+
+RUN printf "users:\n  red:\n    password: admin\n\napp:\n  contact: admin@local\n  listen: 0.0.0.0:8888\n\ncrypt_salt: somesalt123\ncrypt_key: somesecretkey123456789\n\nplugins:\n  - magma\n  - builder\n  - access\n  - stockpile\n  - sandcat\n  - manx\n  - atomic\n" > conf/default.yml
+
+# -----------------------------
+# 7. Environment fixes (important for Go tools)
+# -----------------------------
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+# -----------------------------
+# 8. Expose ports
+# -----------------------------
+EXPOSE 8888 7010
+
+# -----------------------------
+# 9. Start CALDERA
+# -----------------------------
+WORKDIR /opt/caldera
+CMD ["python3", "server.py", "--insecure"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnske5h1he33g"]
+
+[ext_resource type="PackedScene" uid="uid://bnl20m8b5lobd" path="res://3D_Assets/Red_Blue_Team.glb" id="1_qlklq"]
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_qlklq")]

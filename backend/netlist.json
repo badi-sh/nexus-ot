@@ -1,0 +1,31 @@
+{
+  "Assets": [
+    {
+      "Id": "Node_40867",
+      "Type": "Physical",
+      "Meta": {
+        "id": "AssetNode",
+        "ip": "192.168.1.10",
+        "Type": "Physical"
+      }
+    },
+    {
+      "Id": "Node_1868",
+      "Type": "Physical",
+      "Meta": {
+        "id": "AssetNode",
+        "ip": "192.168.1.10",
+        "Type": "Physical",
+        "capacity": "100"
+      }
+    }
+  ],
+  "Links": [
+    {
+      "From": "Node_1868",
+      "FromPort": 0,
+      "To": "Node_40867",
+      "ToPort": 0
+    }
+  ]
+}
