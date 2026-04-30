@@ -1,8 +1,6 @@
 # Nexus-OT: Industrial Cybersecurity Cyber Range
 
-![NFSU Logo](docs/images/NFSULOGO.png)
-
-Nexus-OT is a next-generation Industrial Cybersecurity Cyber Range developed as part of a Master's dissertation at the **National Forensic Sciences University (NFSU)**. It combines a visual network topology designer with a powerful infrastructure engine, allowing users to design OT environments, simulate physical processes, and deploy real-world containerized infrastructure for security testing and forensic analysis.
+Nexus-OT is a next-generation Industrial Cybersecurity Cyber Range that combines a visual network topology designer with a powerful infrastructure engine. It allows users to design Operational Technology (OT) environments, simulate physical processes, and deploy real-world containerized infrastructure for security testing and analysis.
 
 ## 📐 System Architecture
 
@@ -93,10 +91,6 @@ python3 server.py
 - Connect nodes via the data link ports.
 - Assign IPs and Roles in the **Inspector Panel**.
 - Click **"Build Network"** to deploy.
-
-## 📝 Dissertation Context
-
-This project was developed for the Master's dissertation in **Digital Forensics and Information Security** at the **National Forensic Sciences University (NFSU)**. It serves as a platform for studying OT security, forensic artifacts in industrial networks, and the effectiveness of security monitoring in virtualized ICS environments.
 
 ## 📜 License
 

@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq7p8lfh33ijh"]
-
-[ext_resource type="PackedScene" uid="uid://cvvxmnd2b63v3" path="res://3D_Assets/Engineering_Workstation.glb" id="1_2b8ly"]
-
-[node name="Sketchfab_Scene" instance=ExtResource("1_2b8ly")]

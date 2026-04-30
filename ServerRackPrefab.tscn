@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://yu7vuioftxl6"]
-
-[ext_resource type="PackedScene" uid="uid://bn3tlufeosktg" path="res://3D_Assets/Historian.glb" id="1_8kitv"]
-
-[node name="Sketchfab_Scene" instance=ExtResource("1_8kitv")]
