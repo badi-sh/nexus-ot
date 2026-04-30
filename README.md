@@ -1,18 +1,55 @@
 # Nexus-OT: Industrial Cybersecurity Cyber Range
 
-Nexus-OT is a next-generation Industrial Cybersecurity Cyber Range that combines a visual network topology designer with a powerful infrastructure engine. It allows users to visually design Operational Technology (OT) environments, simulate physical processes, and deploy real-world containerized infrastructure for security testing, adversary emulation, and defense validation.
+![NFSU Logo](docs/images/NFSULOGO.png)
 
-Built with **Godot 4.5 (C#)** for the frontend and a **Python/FastAPI** backend, Nexus-OT provides a seamless transition from conceptual architecture to a fully functional, live-monitored cyber range.
+Nexus-OT is a next-generation Industrial Cybersecurity Cyber Range developed as part of a Master's dissertation at the **National Forensic Sciences University (NFSU)**. It combines a visual network topology designer with a powerful infrastructure engine, allowing users to design OT environments, simulate physical processes, and deploy real-world containerized infrastructure for security testing and forensic analysis.
 
-## 🚀 Features
+## 📐 System Architecture
 
-- **Visual Topology Designer**: Drag-and-drop interface for creating complex industrial networks.
-- **Purdue Model Compliance**: Automatic classification of assets into Purdue levels (Level 0 to Level 5).
-- **Automated Deployment**: One-click generation of `docker-compose.yml` and live orchestration of containers.
-- **Live Physics Engine**: Real-time simulation of fluid dynamics and pressure equilibrium in pipe networks.
-- **Integrated SOC & Monitoring**: Built-in packet sniffing with Scapy and log aggregation via the ELK Stack (Elasticsearch, Kibana, Filebeat).
-- **Adversary Emulation**: Integration with MITRE CALDERA for automated attack scenarios.
-- **Digital Twin Visualization**: Real-time feedback of breaker states and process values within the graphical editor.
+The project follows a modular architecture that bridges visual design with live container orchestration.
+
+![System Architecture](docs/images/System_Architecture.png)
+
+### Core Components
+- **Godot 4.5 Frontend**: A C#-powered graphical interface for designing Purdue Model compliant topologies.
+- **FastAPI Backend**: Orchestrates Docker infrastructure and solves physical flow equations.
+- **ELK Stack Monitoring**: Centralized logging for Zeek IDS and Modbus traffic analysis.
+- **CALDERA C2**: Integrated adversary emulation for automated attack scenarios.
+
+## 🔄 Workflow
+
+The transition from a visual graph to a live cyber range is fully automated through a deterministic deployment pipeline.
+
+![System Workflow](docs/images/System_Workflow.png)
+
+1. **Design**: Create a topology in the Godot editor.
+2. **Translate**: Backend generates `docker-compose.yml` and `iptables` rules.
+3. **Deploy**: Containers are spun up with enforced network segmentation.
+4. **Analyze**: Traffic is captured and indexed in the SOC dashboard.
+
+## 🚀 Key Features
+
+- **Visual Topology Designer**: Drag-and-drop interface for complex industrial networks.
+- **Purdue Model Compliance**: Automatic classification of assets into Levels 0 to 5.
+- **Live Physics Engine**: Real-time simulation of fluid dynamics and pressure equilibrium.
+- **Integrated SOC**: Built-in packet sniffing with Scapy and log aggregation via ELK.
+- **Adversary Emulation**: Automated attack scenarios using MITRE ATT&CK for ICS.
+
+## 🛡️ Attack Automation & Results
+
+Nexus-OT supports automated adversary emulation to test the resilience of OT infrastructure.
+
+![Attack Automation](docs/images/attack_automation.png)
+
+### SOC Monitoring & Dashboard
+Real-time traffic analysis and attack detection are visualized through integrated Kibana dashboards.
+
+![SOC Dashboard](docs/images/soc_dashboard_results.png)
+
+### Physical Disruption Simulation
+The system captures the physical impact of cyber-attacks on industrial processes, such as abnormal pressure spikes or actuator manipulation.
+
+![Physical Disruption](docs/images/physical_disruption_2.png)
 
 ## 📁 Project Structure
 
@@ -20,70 +57,46 @@ Built with **Godot 4.5 (C#)** for the frontend and a **Python/FastAPI** backend,
 nexus-ot/
 ├── project.godot                  # Godot 4.5 project configuration
 ├── Nexus_OT.csproj               # .NET 8 C# project
-├── GraphManager.cs               # Core logic for graph management and API calls
+├── GraphManager.cs               # Core logic for graph management
 ├── AssetNode.cs                  # Graphical representation of network assets
 ├── InspectorPanel.cs             # UI for modifying asset properties
-├── LinkDataStore.cs              # Metadata storage for network connections
-├── main.tscn                     # Main Godot scene
+├── docs/images/                  # System diagrams and screenshots
 ├── backend/                      # Backend services and infrastructure engine
 │   ├── server.py                 # FastAPI server (API endpoint)
 │   ├── infrastructure.py         # Docker Compose generation logic
 │   ├── solver.py                 # Physics simulation engine
 │   ├── soc.py                    # SOC monitoring and packet sniffing
-│   ├── images/                   # Custom Dockerfiles (PLC, IDS, Red/Blue Teams)
-│   ├── logic/                    # PLC logic and polling scripts
-│   └── st_files/                 # IEC 61131-3 Structured Text programs
-└── 3D_Assets/                    # High-quality 3D models for equipment
+│   └── images/                   # Custom Dockerfiles
+└── 3D_Assets/                    # High-quality 3D models
 ```
 
-## 🛠️ Implementation & Deployment
+## 🛠️ Implementation Steps
 
-### Prerequisites
-
+### 1. Environment Setup
+Ensure you have the following installed:
 - **Godot 4.5** (with .NET support)
-- **Docker** & **Docker Compose**
+- **Docker & Docker Compose**
 - **Python 3.10+**
-- **Gnome Terminal** (for auto-terminal execution)
 
-### Steps to Run
+### 2. Launch Backend
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 server.py
+```
 
-1. **Start the Backend API**:
-   ```bash
-   cd backend
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install -r requirements.txt
-   python3 server.py
-   ```
+### 3. Visual Design & Build
+- Open `project.godot` in Godot.
+- Click **Add Node** to place assets (PLC, HMI, Firewall, etc.).
+- Connect nodes via the data link ports.
+- Assign IPs and Roles in the **Inspector Panel**.
+- Click **"Build Network"** to deploy.
 
-2. **Launch the Godot Editor**:
-   - Open Godot 4.5.
-   - Import the `project.godot` file.
-   - Press **F5** to run the project.
+## 📝 Dissertation Context
 
-3. **Design and Build**:
-   - Drag nodes from the sidebar.
-   - Connect ports to define network links.
-   - Configure IPs and roles in the Inspector Panel.
-   - Click **"Build Network"** to deploy the live infrastructure.
-
-4. **Monitor and Test**:
-   - Use the **"Open Terminal"** button to access live containers.
-   - Access **Kibana** at `http://localhost:5601` for log analysis.
-   - Access **Node-RED** at `http://localhost:1880` for HMI control.
-
-## 🛡️ Use Cases
-
-- **Security Research**: Analyze the impact of ICS-specific attacks on industrial protocols like Modbus TCP.
-- **Training & Education**: Teach students about the Purdue Model, network segmentation, and OT defense-in-depth.
-- **Incident Response Testing**: Validate SOC alerts and incident response playbooks against real containerized adversaries.
-- **Protocol Validation**: Test new industrial protocols or security appliances in a safe, reproducible environment.
-
-## ⚠️ Known Limitations
-
-*   **Network Segmentation**: Currently relies on container-level `iptables` rather than true VLAN isolation.
-*   **Resource Intensity**: Running the full ELK stack and multiple PLCs requires significant RAM (16GB+ recommended).
-*   **Static IPs**: Some attack payloads and SOC monitoring scripts currently use hardcoded IP references.
+This project was developed for the Master's dissertation in **Digital Forensics and Information Security** at the **National Forensic Sciences University (NFSU)**. It serves as a platform for studying OT security, forensic artifacts in industrial networks, and the effectiveness of security monitoring in virtualized ICS environments.
 
 ## 📜 License
 
