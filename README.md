@@ -44,6 +44,13 @@ Real-time traffic analysis and attack detection are visualized through integrate
 
 ![SOC Dashboard](docs/images/soc_dashboard_results.png)
 
+### HMI & Telemetry
+The project includes a custom HMI built with Node-RED for real-time monitoring and control of the industrial process.
+
+| HMI Backend (Node-RED Flow) | HMI Frontend (Cyber Range Telemetry) |
+| :---: | :---: |
+| ![HMI Flow](docs/images/node_red_hmi.png) | ![HMI Dashboard](docs/images/hmi_telemetry_results.png) |
+
 ### Physical Disruption Simulation
 The system captures the physical impact of cyber-attacks on industrial processes, such as abnormal pressure spikes or actuator manipulation.
 
