@@ -47,7 +47,7 @@ Real-time traffic analysis and attack detection are visualized through integrate
 ### Physical Disruption Simulation
 The system captures the physical impact of cyber-attacks on industrial processes, such as abnormal pressure spikes or actuator manipulation.
 
-![Physical Disruption](docs/images/physical_disruption_2.png)
+![Physical Disruption](docs/images/physical_disruption_1.png)
 
 ## 📁 Project Structure
 
